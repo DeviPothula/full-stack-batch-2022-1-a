@@ -28,7 +28,7 @@ export default function OTP()
         else
         {
             alert("enter valid otp")
-            // window.location="http://localhost:3000/Home";
+            
         }
     })
     }
