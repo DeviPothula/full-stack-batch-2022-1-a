@@ -4,9 +4,7 @@ const {User,Friend}=require('./models')
 var Cors=require('cors');
 var bodyParser=require('body-parser')
 require('dotenv').config()
-const accountSid = 'AC29df809115d57e3ac22bdbbb381664fb'; 
-const authToken = 'ac98191537e0d996a36ee91496d26bd8'; 
-const client = require('twilio')(accountSid, authToken); 
+const client = require('twilio')(process.env.accountSid, process.env.authToken); 
 var app=express();
 const cron=require('node-cron')
 const registerRouter=require('./routes/register')
@@ -60,7 +58,7 @@ async function  users_fun()
         return(
             client.messages.
             create({
-             body:"hii devi ",
+             body:"I am from Breakprice Application ",
              to:"+91" + u.dataValues.phone_number,
              messagingServiceSid:process.env.messagingServiceSid,  
             }).then(msg=>console.log(msg.sid))
@@ -70,9 +68,10 @@ async function  users_fun()
     })
 }
 //minutes hours day(1-31) month  weekday(0-7)
-// cron.schedule("*/3 * * * *",()=>{
-//     users_fun();
-// })
+//send a msg at monday on every month
+cron.schedule("29 9 * */1 1",()=>{
+    users_fun();
+})
 app.listen({port:5000},async(req,res)=>{
     console.log("I am running from server...5000");
     await sequelize.authenticate();

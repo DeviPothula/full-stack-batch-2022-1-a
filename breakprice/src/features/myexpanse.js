@@ -16,8 +16,6 @@ export default function Expenses()
     return(
         <div>
           <Homenav></Homenav>
-            
-            <p><b>List Of Expanses  {localStorage.getItem('name')} Created</b></p>
             <div className='d-flex justify-content-around'>
               <div className='ms-3'>
               <Navbar></Navbar>

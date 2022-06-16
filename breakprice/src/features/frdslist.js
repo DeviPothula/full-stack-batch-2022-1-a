@@ -19,8 +19,6 @@ export default function Frdslist()
         <div>
            
            <Homenav></Homenav>
-            
-            <p><b>{localStorage.getItem('name')} Your Friends List</b></p>
              <div className='d-flex justify-content-around'>
                <div className='ms-3'>
              <Navbar></Navbar>
