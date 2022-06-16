@@ -3,6 +3,7 @@ var express=require('express');
 const {User,Friend}=require('./models')
 var Cors=require('cors');
 var bodyParser=require('body-parser')
+require('dotenv').config()
 const accountSid = 'AC29df809115d57e3ac22bdbbb381664fb'; 
 const authToken = 'ac98191537e0d996a36ee91496d26bd8'; 
 const client = require('twilio')(accountSid, authToken); 
@@ -61,7 +62,7 @@ async function  users_fun()
             create({
              body:"hii devi ",
              to:"+91" + u.dataValues.phone_number,
-             messagingServiceSid:'MG41a9e6a45f3b7f8c0294f7a6691f1d5f',  
+             messagingServiceSid:process.env.messagingServiceSid,  
             }).then(msg=>console.log(msg.sid))
             .catch(err=>{console.log(err)})
         )

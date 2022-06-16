@@ -1,13 +1,13 @@
 const express=require('express')
 const {User,Friend}=require('../models')
-const  config=require('../config/twilio_config')
 const  router=express.Router();
+require('dotenv').config()
 const { body, validationResult } = require('express-validator');
-const client=require("twilio")(config.accountSID,config.authToken)
+const client=require("twilio")(process.env.accountSID,process.env.authToken)
 var jwt=require('jsonwebtoken');
 router.post("/login",body('email').isEmail(),body('password').isLength({min:4}),async(req,res)=>{
     console.log("I am from login route...",req.body);
-    console.log("config details",config.accountSID,config.authToken,config.serviceID)
+    console.log("config details",process.env.accountSID,process.env.authToken,process.env.serviceID)
     try
     {
         const errors = validationResult(req);
@@ -31,7 +31,7 @@ router.post("/login",body('email').isEmail(),body('password').isLength({min:4}),
 
                             client
                             .verify
-                            .services(config.serviceID)
+                            .services(process.env.serviceID)
                             .verifications
                             .create(
                                 {
@@ -40,7 +40,7 @@ router.post("/login",body('email').isEmail(),body('password').isLength({min:4}),
                                 }
                             )
                             .then((data)=>{
-                                // token generation
+                            //     // token generation
                                 console.log("i am after otp generate");
                               jwt.sign({user},'secretkey',(err,token)=>{
                                 res.send({msg:"success",token:token,user_id:user.id,name:user.name,phone:user.phone_number})

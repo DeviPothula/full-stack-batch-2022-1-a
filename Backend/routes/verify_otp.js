@@ -1,9 +1,8 @@
 const express=require('express')
 const {User,Friend}=require('../models')
 const  router=express.Router();
-const  config=require('../config/twilio_config')
 const { body, validationResult } = require('express-validator');
-const client=require("twilio")(config.accountSID,config.authToken)
+const client=require("twilio")(process.env.accountSID,process.env.authToken)
 router.post("/verify_otp",body('phone').isMobilePhone(),body('otp').isLength({min:4}),function(req,res)
 {
     const errors = validationResult(req);
@@ -13,7 +12,7 @@ router.post("/verify_otp",body('phone').isMobilePhone(),body('otp').isLength({mi
         }
     console.log("i am from verify otp route",req.body)
     client.verify
-    .services(config.serviceID)
+    .services(process.env.serviceID)
     .verificationChecks
     .create({
         to:"+91"+ req.body.phone,
