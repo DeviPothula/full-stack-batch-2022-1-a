@@ -33,7 +33,7 @@ const dispatch = useDispatch();
             if(f===1)
             {
                 localStorage.setItem("user_email",values.email)
-                window.location="http://localhost:3000/reset";
+                window.location="https://backend-breakprice-app.herokuapp.com/reset";
             }
             else
             {

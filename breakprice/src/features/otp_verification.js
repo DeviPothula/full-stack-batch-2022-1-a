@@ -5,7 +5,7 @@ export default function OTP()
     function verify()
     {
         console.log("I am otp verify function,,,,",otp);
-      fetch('http://localhost:5000/verify_otp/verify_otp', {
+      fetch('https://backend-breakprice-app.herokuapp.com/verify_otp/verify_otp', {
         method: "POST",
         body: JSON.stringify({otp:otp,phone:localStorage.getItem("phone")}),
         headers: {
@@ -18,7 +18,7 @@ export default function OTP()
         console.log("data from otp route",data)
         if(data.msg==="success")
         {
-            window.location="http://localhost:3000/Home";
+            window.location="https://frontend-breakprice-app.herokuapp.com/Home";
         }
         else if(data.errors)
         {

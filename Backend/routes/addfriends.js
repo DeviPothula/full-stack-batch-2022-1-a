@@ -6,7 +6,7 @@ const db=require('../models/index');
 const {sequelize}=require('../models');
 const { body, validationResult } = require('express-validator');
 var jwt=require('jsonwebtoken');
-router.post("/addfriend",body('email').isEmail(),body().isLength(1),verifyToken,async(req,res)=>{
+router.post("/addfriend",body('email').isEmail(),verifyToken,async(req,res)=>{
     console.log("data from addfriend request",req.body);
     try{
         const errors = validationResult(req);

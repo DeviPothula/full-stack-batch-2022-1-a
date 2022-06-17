@@ -21,7 +21,7 @@ function check(values)
 {
     console.log("values,,",values);
       console.log("I am login request,,,,");
-      fetch('http://localhost:5000/login/login', {
+      fetch('https://backend-breakprice-app.herokuapp.com/login/login', {
         method: "POST",
         body: JSON.stringify(values),
         headers: {
@@ -51,7 +51,7 @@ function check(values)
         localStorage.setItem("user_id",data.user_id);
         localStorage.setItem("name",data.name);
         localStorage.setItem("phone",data.phone)
-        window.location="http://localhost:3000/verify_otp";
+        window.location="https://frontend-breakprice-app.herokuapp.com/verify_otp";
       }
       
     });

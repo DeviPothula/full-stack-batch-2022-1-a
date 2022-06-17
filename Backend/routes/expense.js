@@ -4,8 +4,7 @@ const  router=express.Router();
 const app=express()
 var jwt=require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
-router.post("/add_expanse",body('group_id').isInt(),body('user_id').isInt(),body('ammount').isNumeric(),body('event_name'
-).isAlpha(),verifyToken,async(req,res)=>{
+router.post("/add_expanse",body('event_name').isAlpha(),verifyToken,async(req,res)=>{
     console.log("data from api post request....in users",req.body);
     try{
         

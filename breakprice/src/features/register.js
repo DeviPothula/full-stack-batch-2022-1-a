@@ -27,7 +27,7 @@ export default function Register()
   {
     console.log("save method called,,,",values);
 
-    fetch('http://localhost:5000/register/register', {
+    fetch('https://backend-breakprice-app.herokuapp.com/register/register', {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
@@ -38,7 +38,7 @@ export default function Register()
   .then((data)=>{
     if(data.msg==="success")
     {
-      window.location="http://localhost:3000/";
+      window.location="https://frontend-breakprice-app.herokuapp.com/";
     }
     else if(data.errors)
     {

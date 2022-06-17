@@ -72,7 +72,7 @@ const priceSlice = createSlice({
   export function getUsers() {
     // console.log('GETITEMS ... METHOD CALLED.....');
     return (dispatch) => {
-      fetch('http://localhost:5000/getusers/getusers')
+      fetch('https://backend-breakprice-app.herokuapp.com/getusers/getusers')
         .then((res) => res.json())
         .then((data) => {
             console.log("data in get users",data[0]);
@@ -87,7 +87,7 @@ const priceSlice = createSlice({
   {
     // console.log("I am from getting frds method",id);
     return(dispatch)=>{
-      fetch('http://localhost:5000/getfriends/getfriends/'+id)
+      fetch('https://backend-breakprice-app.herokuapp.com/getfriends/getfriends/'+id)
         .then((res) => res.json())
         .then((data) => {
             console.log("data in get friends",data);
@@ -99,7 +99,7 @@ const priceSlice = createSlice({
   {
     // console.log("I am from getting frds method",id);
     return(dispatch)=>{
-      fetch('http://localhost:5000/group_details/group_details/'+id)
+      fetch('https://backend-breakprice-app.herokuapp.com/group_details/group_details/'+id)
         .then((res) => res.json())
         .then((data) => {
             console.log("data in get groups details",data[0]);
@@ -111,7 +111,7 @@ const priceSlice = createSlice({
   {
     // console.log("I am from getting frds method",id);
     return(dispatch)=>{
-      fetch('http://localhost:5000/group_members/group_members/'+id)
+      fetch('https://backend-breakprice-app.herokuapp.com/group_members/group_members/'+id)
         .then((res) => res.json())
         .then((data) => {
             console.log("data in get groups members",data[0]);
@@ -123,7 +123,7 @@ const priceSlice = createSlice({
  export function add_frd(obj)
  {
      return(dispatch)=>{
-        fetch('http://localhost:5000/addfriend/addfriend', {
+        fetch('https://backend-breakprice-app.herokuapp.com/addfriend/addfriend', {
             method: "POST",
             body: JSON.stringify(obj),
             headers: {
@@ -149,7 +149,7 @@ const priceSlice = createSlice({
    return(dispatch)=>
    {
     console.log("i am update pas function",obj)
-    fetch('http://localhost:5000/forgotpas/forgotpas', {
+    fetch('https://backend-breakprice-app.herokuapp.com/forgotpas/forgotpas', {
                 method: "POST",
                 body: JSON.stringify(obj),
                 headers: {
@@ -166,7 +166,7 @@ const priceSlice = createSlice({
               }
               else if(data.msg==='success')
               {
-                window.location="http://localhost:3000/";
+                window.location="https://backend-breakprice-app.herokuapp.com/";
               }
             })
    }
@@ -175,7 +175,7 @@ const priceSlice = createSlice({
  {
    return(dispatch)=>{
     console.log("i am update pas function",obj)
-    fetch('http://localhost:5000/add_expanse/add_expanse', {
+    fetch('https://backend-breakprice-app.herokuapp.com/add_expanse/add_expanse', {
                 method: "POST",
                 body: JSON.stringify(obj),
                 headers: {
@@ -206,7 +206,7 @@ const priceSlice = createSlice({
  {
    return(dispatch)=>{
     console.log("i am update pas function",obj)
-    fetch('http://localhost:5000/addgroup/addgroup', {
+    fetch('https://backend-breakprice-app.herokuapp.com/addgroup/addgroup', {
                 method: "POST",
                 body: JSON.stringify(obj),
                 headers: {
@@ -236,7 +236,7 @@ const priceSlice = createSlice({
  export function MyExpanse(id)
  {
   return(dispatch)=>{
-    fetch('http://localhost:5000/myexpanse/myexpanse/'+id)
+    fetch('https://backend-breakprice-app.herokuapp.com/myexpanse/myexpanse/'+id)
       .then((res) => res.json())
       .then((data) => {
           console.log("data in my expanses",data[0]);
@@ -247,7 +247,7 @@ const priceSlice = createSlice({
  export function ToExpanse(id)
  {
   return(dispatch)=>{
-    fetch('http://localhost:5000/toexpanse/toexpanse/'+id)
+    fetch('https://backend-breakprice-app.herokuapp.com/toexpanse/toexpanse/'+id)
       .then((res) => res.json())
       .then((data) => {
           console.log("data in to expanses",data[0]);
@@ -258,7 +258,7 @@ const priceSlice = createSlice({
  export function getDetails(id)
  {
   return(dispatch)=>{
-    fetch('http://localhost:5000/details/details/'+id)
+    fetch('https://backend-breakprice-app.herokuapp.com/details/details/'+id)
       .then((res) => res.json())
       .then((data) => {
           console.log("data in to expanses",data);
@@ -269,7 +269,7 @@ const priceSlice = createSlice({
  export function getActivities(id)
  {
   return(dispatch)=>{
-    fetch('http://localhost:5000/acts/acts/'+id)
+    fetch('https://backend-breakprice-app.herokuapp.com/acts/acts/'+id)
       .then((res) => res.json())
       .then((data) => {
           console.log("data in getActivities",data);
@@ -281,18 +281,19 @@ const priceSlice = createSlice({
  {
   return(dispatch)=>{
     console.log("i am update pas function",obj)
-    fetch('http://localhost:5000/update_amount/update_amount', {
+    fetch('https://backend-breakprice-app.herokuapp.com/update_amount/update_amount', {
                 method: "POST",
                 body: JSON.stringify(obj),
                 headers: {
                     'Content-Type': 'application/json',
-                    'authorization':localStorage.getItem('authorization')
+                   
                 }
             })
             .then((res)=>res.json())
             .then((data)=>{
-              
+                 console.log("data from update amount",data)
             })
+            
 
    }
  }
@@ -300,7 +301,7 @@ const priceSlice = createSlice({
  export function getCredits(id)
  {
   return(dispatch)=>{
-    fetch('http://localhost:5000/account_credits/account_credits/'+id)
+    fetch('https://backend-breakprice-app.herokuapp.com/account_credits/account_credits/'+id)
       .then((res) => res.json())
       .then((data) => {
           console.log("data in getCredits",data[0]);
@@ -312,7 +313,7 @@ const priceSlice = createSlice({
  export function getDebits(id)
  {
   return(dispatch)=>{
-    fetch('http://localhost:5000/account_debits/account_debits/'+id)
+    fetch('https://backend-breakprice-app.herokuapp.com/account_debits/account_debits/'+id)
       .then((res) => res.json())
       .then((data) => {
           console.log("data in getDebits",data[0]);

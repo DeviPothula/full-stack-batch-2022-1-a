@@ -6,7 +6,7 @@ const db=require('../models/index');
 const {sequelize}=require('../models');
 const { body, validationResult } = require('express-validator');
 var jwt=require('jsonwebtoken');
-router.post("/addgroup",body('user_id').isLength(1),body('group_name').isLength({min:5}),verifyToken,async(req,res)=>{
+router.post("/addgroup",body('group_name').isLength({min:5}),verifyToken,async(req,res)=>{
     console.log("data from addgroup request",req.body);
     try{
         const errors = validationResult(req);

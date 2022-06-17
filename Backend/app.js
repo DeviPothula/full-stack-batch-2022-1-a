@@ -4,7 +4,7 @@ const {User,Friend}=require('./models')
 var Cors=require('cors');
 var bodyParser=require('body-parser')
 require('dotenv').config()
-const client = require('twilio')(process.env.accountSid, process.env.authToken); 
+const client = require('twilio')(process.env.accountSID, process.env.authToken); 
 var app=express();
 const cron=require('node-cron')
 const registerRouter=require('./routes/register')
@@ -72,7 +72,8 @@ async function  users_fun()
 cron.schedule("29 9 * */1 1",()=>{
     users_fun();
 })
-app.listen({port:5000},async(req,res)=>{
+const port=process.env.PORT || 5000
+app.listen(port,async(req,res)=>{
     console.log("I am running from server...5000");
     await sequelize.authenticate();
     console.log("Dataabase Conneccted successfully....");
